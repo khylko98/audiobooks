@@ -1,6 +1,22 @@
 version: '3'
 
 services:
+  db:
+    image: postgres:15
+    container_name: db
+    ports:
+      - "5332:5432"
+    volumes:
+      - db:/data/postgres
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    networks:
+      - db
+
   backend:
     build: ./backend
     container_name: backend
@@ -10,3 +26,14 @@ services:
       - ./backend:/usr/src/app
     environment:
       - NODE_ENV=production
+    networks:
+      - db
+    depends_on:
+      - db
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
