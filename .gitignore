@@ -1,1 +1,4 @@
 node_modules
+/frontend/README.md
+.eslintrc.cjs
+/frontend/.gitignore
