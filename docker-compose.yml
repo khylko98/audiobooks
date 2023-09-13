@@ -31,6 +31,20 @@ services:
     depends_on:
       - db
 
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=production
+    networks:
+      - db
+    depends_on:
+      - backend
+
 networks:
   db:
     driver: bridge
