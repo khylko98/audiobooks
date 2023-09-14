@@ -39,9 +39,9 @@ cd audiobooks
 2. Run docker compose:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 ## Usage
 
-Access the application by opening a web browser and navigating to `http://localhost:3001`. You can browse and search for audiobooks, access book details and chapters, and listen to audio files.
+Access the application by opening a web browser and navigating to http://localhost:5173. You can browse and search for audiobooks, access book details and chapters, and listen to audio files.
